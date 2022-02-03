@@ -53,6 +53,6 @@ eft-vae/Plots/
 eft-vae/testPlots/
 eft-vae/vae_outputs/
 
-jet-cnn/
+#jet-cnn/
 #eft-dnn/
 #eft-vae/
