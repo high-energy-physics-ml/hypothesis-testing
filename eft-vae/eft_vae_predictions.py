@@ -108,26 +108,17 @@ original_shape = x_train.shape[1:]
 original_dim = np.prod(original_shape)
 latent_dim = 2
 intermediate_dim = 10
-final_dim = original_dim
+final_dim = 5
 epochs = 50
 epsilon_std = 0.01
 
 # ========================== Build VAE network =================================
 
 # Build model
-#in_layer = Input(shape=original_shape)
-#x = Flatten()(in_layer)
-
-
 x = Input(shape=(original_dim,))
-#h = Dense(intermediate_dim, activation='relu')(x)
-#h = Dense(final_dim, activation = 'relu')(h)
 
-"""
 h = Dense(intermediate_dim, activation='relu')(x)
 h = Dense(final_dim, activation = 'relu')(h)
-"""
-h = Dense(final_dim, activation = 'relu')(x)
 
 z_mean = Dense(latent_dim)(h)
 z_log_var = Dense(latent_dim)(h)
@@ -138,30 +129,21 @@ def sampling(args):
                               stddev=epsilon_std)
     return z_mean + K.exp(z_log_var / 2) * epsilon
 
-# note that "output_shape" isn't necessary with the TensorFlow backend
+# Note that "output_shape" isn't necessary with the TensorFlow backend
 z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
 
-# we instantiate these layers separately so as to reuse them later
+# We instantiate these layers separately so as to reuse them later
 decoder_f = Dense(final_dim, activation='relu')
 decoder_h = Dense(intermediate_dim, activation='relu')
 decoder_mean = Dense(original_dim, activation='sigmoid')
 
-#f_decoded = decoder_f(z)
-#h_decoded = decoder_h(f_decoded)
-
-"""
 f_decoded = decoder_f(z)
 h_decoded = decoder_h(f_decoded)
 x_decoded_mean = decoder_mean(h_decoded)
 x_decoded_img = Reshape(original_shape)(x_decoded_mean)
-"""
-f_decoded = decoder_f(z)
-x_decoded_mean = decoder_mean(f_decoded)
-x_decoded_img = Reshape(original_shape)(x_decoded_mean)
 
 
-# instantiate VAE model
-#vae = Model(in_layer, x_decoded_img)
+# Instantiate VAE model
 vae = Model(x, x_decoded_img)
 
 
@@ -246,8 +228,8 @@ x_test_vh_chw_zp005_reconerror = model_mse(x_test_vh_chw_zp005)
 #x_test_vh_chw_zp1_reconerror = model_mse(x_test_vh_chw_zp1)
 
 
-np.savetxt("vae_outputs/vh_chw_zero_recons_zp005_cHW_normalised_13output_dim002.txt",x_test_reconerror)
-np.savetxt("vae_outputs/vh_chw_zp005_recons_zp005_cHW_normalised_13output_dim002.txt",x_test_vh_chw_zp005_reconerror)
+#np.savetxt("vae_outputs/vh_chw_zero_recons_zp005_cHW_normalised_13output_dim002.txt",x_test_reconerror)
+#np.savetxt("vae_outputs/vh_chw_zp005_recons_zp005_cHW_normalised_13output_dim002.txt",x_test_vh_chw_zp005_reconerror)
 
 #np.savetxt("vh_chw_zpz1_recons_all_cHW_normalised_001.txt",x_test_vh_chw_zpz1_reconerror)
 #np.savetxt("vh_chw_zpz3_recons_all_cHW_normalised_001.txt",x_test_vh_chw_zpz3_reconerror)
