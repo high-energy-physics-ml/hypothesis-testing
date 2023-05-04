@@ -41,28 +41,9 @@ The second `eft-dnn` does the same but with a DNN classifier using data of $Zh$ 
 
 The third `eft-vae` trains a VAE on only the $Zh$ decay to $b \bar{b}$ and $\ell^+ \ell^-$ under the Standard Model. Then once trained, it is used to calculate the Reconstruction Error $R$ for events belonging to a dataset containing some SMEFT events as well as Standard Model background. The Reconstruction Error is also found for events belonging to a dataset cointaining only Standard Model background for reference. Then a generalised Likelihood-Ratio test is perfromed using the Standard Model background distribution and the 'observed' data containing the SMEFT signal events. The hypothesis test is performed using a number of toy experiments so that an average discovery significance can be found.
 
-There is also a fourth directory `misc` which 
+There is also a fourth directory `misc` which contains scripts used to produce plots for demonstration purposes, but are not otherwise used.
 
-The code does ...
-
-The code is run ...
-
-References, funding and additional info ...
-
-VS is supported by the PROMETEO/2021/083 from Generalitat Valenciana, and by PID2020-113644GB-I00 from the Spanish Ministerio de Ciencia e Innovacion. MS acknowledges support by the Data Intensive Science Center in the South East Physics Network (DISCnet), an extension of the STFC, under grant number ST/P006760/1.
-
-**Bold**
-
-[Link](https://www.wikipedia.org)
-
-## Section
-
-A section can be referenced through [Section](#section)
-
-
-
-
-
+For instructions on running the code see the respective directories.
 
 ## Citation
 Please cite the paper as follows in your publications if it helps your research:
