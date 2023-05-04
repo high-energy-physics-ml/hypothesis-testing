@@ -26,7 +26,7 @@ To perform the general hypothesis test run
 ```
 python eft_vae_llr_general.py
 ```
-This reads in the predictions from `vae_outputs` (which can be produced with or without bootstrapping). It then performs a generalised hypotheis test by comparing the reconstruction error PDFs that would be obtained with data that contains only SM background events, or data that contains SM background and SMEFT signal events (mixed with appropriate cross-sections). Note that for our generalised hypothesis test we cannot take the signal PDF to be known a-priori, so we take the average LLR value obtained from simulated toy experiments, in a manner similar to before, but then calculate the $p$-value (which is converted also into $Z$) from this value using the (half)-$\chi^2_1$ distribution. The results from this are saved within `arrays`.
+This reads in the predictions from `vae_outputs` (which can be produced with or without bootstrapping). It then performs a generalised hypotheis test by comparing the reconstruction error PDFs that would be obtained with data that contains only SM background events, or data that contains SM background and SMEFT signal events (mixed with appropriate cross-sections). Note that for our generalised hypothesis test we cannot take the signal PDF to be known a-priori, so we take the average LLR value obtained from simulated toy experiments, in a manner similar to before, but then calculate the $p$-value (which is converted also into $Z$) from this value using the (half) - $\chi^2_1$ distribution. The results from this are saved within `arrays`.
 
 ### Viewing results
 
